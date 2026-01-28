@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Thenos Design System - Dark Theme with Mint Accent */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Core Dark Theme */
+    --background: 220 20% 6%;
+    --foreground: 210 20% 95%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Mint Green Accent (from logo) */
+    --primary: 155 60% 55%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 155 50% 45%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 15%;
+    --ring: 155 60% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom Thenos Colors */
+    --thenos-dark: 220 20% 6%;
+    --thenos-darker: 220 25% 4%;
+    --thenos-mint: 155 60% 55%;
+    --thenos-mint-glow: 155 65% 65%;
+    --thenos-mint-dark: 155 50% 35%;
+    --thenos-glass: 220 15% 12%;
+    --thenos-glass-border: 220 15% 22%;
+    --thenos-success: 155 65% 45%;
+    --thenos-warning: 45 90% 55%;
+    --thenos-error: 0 70% 55%;
+    --thenos-info: 200 80% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 155 60% 55%;
+    --sidebar-primary-foreground: 220 20% 6%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 15% 15%;
+    --sidebar-ring: 155 60% 55%;
+
+    /* Gradients */
+    --gradient-mint: linear-gradient(135deg, hsl(155 60% 55%), hsl(155 65% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 20% 8%), hsl(220 25% 4%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 15% 14% / 0.8), hsl(220 15% 10% / 0.6));
+    
+    /* Shadows */
+    --shadow-mint: 0 4px 24px -4px hsl(155 60% 55% / 0.25);
+    --shadow-dark: 0 8px 32px -8px hsl(220 25% 2% / 0.8);
+    --shadow-glass: 0 8px 32px -8px hsl(220 25% 2% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* Code Font */
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+  /* Glass Effect */
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/60;
+  }
+
+  /* Mint Glow Effect */
+  .glow-mint {
+    box-shadow: 0 0 20px hsl(155 60% 55% / 0.3),
+                0 0 40px hsl(155 60% 55% / 0.1);
+  }
+
+  .glow-mint-sm {
+    box-shadow: 0 0 10px hsl(155 60% 55% / 0.2);
+  }
+
+  /* Gradient Text */
+  .text-gradient-mint {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(155 60% 60%), hsl(155 65% 50%));
+  }
+
+  /* Code Block Styling */
+  .code-block {
+    @apply bg-secondary/80 rounded-lg p-4 font-mono text-sm overflow-x-auto;
+    @apply border border-border/50;
+  }
+
+  /* Channel Item */
+  .channel-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg;
+    @apply text-muted-foreground hover:text-foreground;
+    @apply hover:bg-secondary/50 transition-all duration-200;
+    @apply cursor-pointer;
+  }
+
+  .channel-item.active {
+    @apply bg-primary/10 text-primary;
+  }
+
+  /* Message Bubble */
+  .message-bubble {
+    @apply bg-secondary/50 rounded-2xl rounded-tl-sm px-4 py-3;
+    @apply border border-border/30;
+  }
+
+  /* Avatar Ring */
+  .avatar-ring {
+    @apply ring-2 ring-primary/30 ring-offset-2 ring-offset-background;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass rounded-xl p-6;
+    @apply hover:border-primary/30 transition-all duration-300;
+  }
+
+  /* Input Focus Ring */
+  .input-focus {
+    @apply focus:ring-2 focus:ring-primary/30 focus:border-primary/50;
+    @apply transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  .animate-pulse-mint {
+    animation: pulseMint 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from { 
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulseMint {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(155 60% 55% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px hsl(155 60% 55% / 0);
+    }
+  }
+}
